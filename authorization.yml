@@ -2,6 +2,8 @@
 - name: Obtener Bearer Token con OAuth2 Client Credentials
   hosts: localhost
   gather_facts: no
+  vars:
+    BEARER_TOKEN: ""
   tasks:
     - name: Solicitar Bearer Token
       uri:
@@ -21,7 +23,9 @@
     - name: Mostrar Bearer Token
       debug:
         msg: "Bearer Token: {{ result.json.access_token }}"
-
+    - name: Guardar token en extra vars
+      set_fact:
+        BEARER_TOKEN: "{{ result.json.access_token }}"
     - name: Comprobar si se obtuvo el Bearer Token
       fail:
         msg: "No se obtuvo el Bearer Token."
