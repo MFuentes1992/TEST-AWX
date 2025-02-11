@@ -1,0 +1,28 @@
+---
+- name: Obtener Bearer Token con OAuth2 Client Credentials
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Solicitar Bearer Token
+      uri:
+        url: "https://auth-st.autozone.com/as/token.oauth2"
+        method: POST
+        body:
+          grant_type: "client_credentials"
+          client_id: "l7xx83773e1e7fb84ad0a641f6ff38e478f6"
+          client_secret: "ilx6vw0qzrLADhk1occKRhco53izqXBhlbvkHYKycHsippPsVoR2zn6SuGuw4YEL"
+          scope: "your_scope_here"  # Si es necesario incluir un scope, reemplaza "your_scope_here"
+        headers:
+          Content-Type: "application/x-www-form-urlencoded"
+        body_format: form-urlencoded
+        return_content: yes
+      register: result
+
+    - name: Mostrar Bearer Token
+      debug:
+        msg: "Bearer Token: {{ result.json.access_token }}"
+
+    - name: Comprobar si se obtuvo el Bearer Token
+      fail:
+        msg: "No se obtuvo el Bearer Token."
+      when: result.json.access_token is not defined
