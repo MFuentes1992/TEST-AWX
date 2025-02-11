@@ -11,7 +11,7 @@
           grant_type: "client_credentials"
           client_id: "l7xx83773e1e7fb84ad0a641f6ff38e478f6"
           client_secret: "ilx6vw0qzrLADhk1occKRhco53izqXBhlbvkHYKycHsippPsVoR2zn6SuGuw4YEL"
-          scope: "your_scope_here"  # Si es necesario incluir un scope, reemplaza "your_scope_here"
+          scope: "az_internal"  # Si es necesario incluir un scope, reemplaza "your_scope_here"
         headers:
           Content-Type: "application/x-www-form-urlencoded"
         body_format: form-urlencoded
