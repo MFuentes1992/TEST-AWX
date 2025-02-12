@@ -7,12 +7,12 @@ const server = http.createServer((req, res) => {
 
     var body = "";
     req.on('readable', function() {
-        body += r.read();
+        body += req.read();
     });
     req.on('end', function() {
         console.log(body);
-        s.write("OK"); 
-        s.end(); 
+        res.write("OK"); 
+        res.end(); 
     });
 
     res.statusCode = 200;
