@@ -4,6 +4,7 @@ const server = http.createServer((req, res) => {
     console.log(`Request method: ${req.method}`);
     console.log(`Request URL: ${req.url}`);
     console.log(`Request headers: ${JSON.stringify(req.headers)}`);
+    console.log(`Request headers: ${JSON.stringify(req.body)}`);
 
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
