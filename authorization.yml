@@ -24,8 +24,9 @@
       debug:
         msg: "Bearer Token: {{ result.json.access_token }}"
     - name: Guardar token en extra vars
-      set_fact:
-        BEARER_TOKEN: "{{ result.json.access_token }}"
+      set_stats:
+        data:
+          BEARER_TOKEN: "{{ result.json.access_token }}"
     - name: Comprobar si se obtuvo el Bearer Token
       fail:
         msg: "No se obtuvo el Bearer Token."
